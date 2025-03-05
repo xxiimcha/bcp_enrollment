@@ -4,9 +4,9 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../dashboard/index.php">
         <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-school"></i>
+            <i class="fas fa-user-shield"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Registrar System</div>
+        <div class="sidebar-brand-text mx-3">Enrollment Admin</div>
     </a>
 
     <!-- Divider -->
@@ -23,62 +23,95 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Nav Item - Students -->
+    <!-- Nav Item - Admissions -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#studentMenu"
-            aria-expanded="true" aria-controls="studentMenu">
-            <i class="fas fa-user-graduate"></i>
-            <span>Students</span>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#admissionsMenu"
+            aria-expanded="true" aria-controls="admissionsMenu">
+            <i class="fas fa-user-plus"></i>
+            <span>Student Admissions</span>
         </a>
-        <div id="studentMenu" class="collapse" aria-labelledby="studentHeading" data-parent="#accordionSidebar">
+        <div id="admissionsMenu" class="collapse" aria-labelledby="admissionsHeading" data-parent="#accordionSidebar">
             <div class="bg-dark py-2 collapse-inner rounded">
-                <a class="collapse-item text-white" href="../students/view.php">Student List</a>
-                <a class="collapse-item text-white" href="../students/enrollment.php">Enrollment</a>
+                <a class="collapse-item text-white" href="../admissions/applications.php">Application Submissions</a>
+                <a class="collapse-item text-white" href="../admissions/approve.php">Approve Applications</a>
+                <a class="collapse-item text-white" href="../admissions/rejected.php">Rejected Applications</a>
             </div>
         </div>
     </li>
 
-    <!-- Nav Item - Faculty -->
+    <!-- Nav Item - Enrollment Management -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#facultyMenu"
-            aria-expanded="true" aria-controls="facultyMenu">
-            <i class="fas fa-chalkboard-teacher"></i>
-            <span>Faculty</span>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#enrollmentMenu"
+            aria-expanded="true" aria-controls="enrollmentMenu">
+            <i class="fas fa-user-check"></i>
+            <span>Enrollment Management</span>
         </a>
-        <div id="facultyMenu" class="collapse" aria-labelledby="facultyHeading" data-parent="#accordionSidebar">
+        <div id="enrollmentMenu" class="collapse" aria-labelledby="enrollmentHeading" data-parent="#accordionSidebar">
             <div class="bg-dark py-2 collapse-inner rounded">
-                <a class="collapse-item text-white" href="../faculty/view.php">Faculty List</a>
+                <a class="collapse-item text-white" href="../enrollment/new.php">New Enrollments</a>
+                <a class="collapse-item text-white" href="../enrollment/approve.php">Approve Enrollment</a>
+                <a class="collapse-item text-white" href="../enrollment/withdrawals.php">Withdrawals & Dropped</a>
+                <a class="collapse-item text-white" href="../enrollment/history.php">Enrollment History</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Nav Item - Student Enrollment Records -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#studentRecordsMenu"
+            aria-expanded="true" aria-controls="studentRecordsMenu">
+            <i class="fas fa-users"></i>
+            <span>Student Enrollment Records</span>
+        </a>
+        <div id="studentRecordsMenu" class="collapse" aria-labelledby="studentRecordsHeading" data-parent="#accordionSidebar">
+            <div class="bg-dark py-2 collapse-inner rounded">
+                <a class="collapse-item text-white" href="../students/view.php">Enrolled Students</a>
+                <a class="collapse-item text-white" href="../students/enrollment_status.php">Enrollment Status</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Nav Item - Class & Schedule Management -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#scheduleMenu"
+            aria-expanded="true" aria-controls="scheduleMenu">
+            <i class="fas fa-calendar-alt"></i>
+            <span>Class Scheduling</span>
+        </a>
+        <div id="scheduleMenu" class="collapse" aria-labelledby="scheduleHeading" data-parent="#accordionSidebar">
+            <div class="bg-dark py-2 collapse-inner rounded">
+                <a class="collapse-item text-white" href="../schedules/view.php">View Class Schedules</a>
+                <a class="collapse-item text-white" href="../schedules/manage.php">Manage Schedules</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Nav Item - Faculty Assignments -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#facultyAssignmentsMenu"
+            aria-expanded="true" aria-controls="facultyAssignmentsMenu">
+            <i class="fas fa-chalkboard-teacher"></i>
+            <span>Faculty Assignments</span>
+        </a>
+        <div id="facultyAssignmentsMenu" class="collapse" aria-labelledby="facultyAssignmentsHeading" data-parent="#accordionSidebar">
+            <div class="bg-dark py-2 collapse-inner rounded">
                 <a class="collapse-item text-white" href="../faculty/assignments.php">Class Assignments</a>
             </div>
         </div>
     </li>
 
-    <!-- Nav Item - Courses & Subjects -->
+    <!-- Nav Item - Payment & Fees -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#courseMenu"
-            aria-expanded="true" aria-controls="courseMenu">
-            <i class="fas fa-book-open"></i>
-            <span>Courses & Subjects</span>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#paymentsMenu"
+            aria-expanded="true" aria-controls="paymentsMenu">
+            <i class="fas fa-money-bill-wave"></i>
+            <span>Payments & Fees</span>
         </a>
-        <div id="courseMenu" class="collapse" aria-labelledby="courseHeading" data-parent="#accordionSidebar">
+        <div id="paymentsMenu" class="collapse" aria-labelledby="paymentsHeading" data-parent="#accordionSidebar">
             <div class="bg-dark py-2 collapse-inner rounded">
-                <a class="collapse-item text-white" href="../courses/view.php">Course List</a>
-                <a class="collapse-item text-white" href="../subjects/view.php">Subject List</a>
-            </div>
-        </div>
-    </li>
-
-    <!-- Nav Item - Document Requests -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#documentMenu"
-            aria-expanded="true" aria-controls="documentMenu">
-            <i class="fas fa-file-alt"></i>
-            <span>Document Requests</span>
-        </a>
-        <div id="documentMenu" class="collapse" aria-labelledby="documentHeading" data-parent="#accordionSidebar">
-            <div class="bg-dark py-2 collapse-inner rounded">
-                <a class="collapse-item text-white" href="../documents/view.php">Request List</a>
-                <a class="collapse-item text-white" href="../documents/status.php">Track Requests</a>
+                <a class="collapse-item text-white" href="../payments/pending.php">Pending Payments</a>
+                <a class="collapse-item text-white" href="../payments/confirmed.php">Confirmed Payments</a>
+                <a class="collapse-item text-white" href="../payments/refunds.php">Refund Requests</a>
             </div>
         </div>
     </li>
@@ -88,27 +121,27 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#reportMenu"
             aria-expanded="true" aria-controls="reportMenu">
             <i class="fas fa-chart-line"></i>
-            <span>Reports</span>
+            <span>Reports & Analytics</span>
         </a>
         <div id="reportMenu" class="collapse" aria-labelledby="reportHeading" data-parent="#accordionSidebar">
             <div class="bg-dark py-2 collapse-inner rounded">
-                <a class="collapse-item text-white" href="../reports/academic.php">Academic Reports</a>
                 <a class="collapse-item text-white" href="../reports/enrollment.php">Enrollment Reports</a>
+                <a class="collapse-item text-white" href="../reports/financial.php">Financial Reports</a>
             </div>
         </div>
     </li>
 
-    <!-- Nav Item - Settings -->
+    <!-- Nav Item - System Settings -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#settingsMenu"
             aria-expanded="true" aria-controls="settingsMenu">
             <i class="fas fa-cogs"></i>
-            <span>Settings</span>
+            <span>System Settings</span>
         </a>
         <div id="settingsMenu" class="collapse" aria-labelledby="settingsHeading" data-parent="#accordionSidebar">
             <div class="bg-dark py-2 collapse-inner rounded">
-                <a class="collapse-item text-white" href="../settings/profile.php">Profile</a>
-                <a class="collapse-item text-white" href="../settings/system.php">System Settings</a>
+                <a class="collapse-item text-white" href="../settings/profile.php">Admin Profile</a>
+                <a class="collapse-item text-white" href="../settings/system.php">System Configuration</a>
             </div>
         </div>
     </li>

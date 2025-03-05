@@ -1,131 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>BCP - Registrar Systemment System</title>
-
-    <link href="./assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <link href="./assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enrollment System</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <style>
-        .card {
-            border-radius: 15px;
+        body {
+            background-color: #f8f9fa;
         }
-        .btn-user {
-            font-size: 1.1rem;
-            padding: 12px;
+        .hero-section {
+            background: url('https://source.unsplash.com/1600x900/?education,students') no-repeat center center/cover;
+            height: 100vh;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+            padding: 20px;
+            backdrop-filter: blur(3px);
         }
-        .form-control-user {
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        .btn-custom {
+            padding: 12px 25px;
+            font-size: 1.2rem;
+        }
+        .steps {
+            background-color: #fff;
+            padding: 50px 20px;
             border-radius: 10px;
         }
-        .login-container {
-            max-width: 450px;
-            margin: auto;
-        }
-        .alert {
-            display: none;
-        }
-        /* Spinner overlay */
-        .spinner-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
+        .footer {
+            background-color: #000;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
         }
     </style>
 </head>
-<body class="bg-gradient-dark">
-    <div class="spinner-overlay">
-        <div class="spinner-border text-light" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
-    </div>
+<body>
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-6 login-container">
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
-                        </div>
-                        <div id="alertMessage" class="alert alert-danger"></div>
-                        <form id="loginForm">
-                            <div class="form-group">
-                                <label for="email">Email Address</label>
-                                <input type="email" class="form-control form-control-user" id="email" name="email" placeholder="Enter Email Address..." required>
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-user btn-block">Login</button>
-                        </form>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h1>Welcome to the Online Enrollment System</h1>
+        <p class="lead">A seamless way to register and enroll for your academic journey</p>
+        <div>
+            <a href="register.php" class="btn btn-primary btn-custom">Register Now</a>
+            <a href="login.php" class="btn btn-outline-light btn-custom">Login</a>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="container mt-5">
+        <h2 class="text-center mb-4">How to Enroll</h2>
+        <div class="row text-center">
+            <div class="col-md-4">
+                <div class="steps p-3">
+                    <i class="fas fa-file-alt fa-3x mb-3 text-primary"></i>
+                    <h4>Step 1: Register</h4>
+                    <p>Create an account and fill out your application details.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="steps p-3">
+                    <i class="fas fa-check-circle fa-3x mb-3 text-success"></i>
+                    <h4>Step 2: Submit & Verify</h4>
+                    <p>Submit the required documents and wait for approval.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="steps p-3">
+                    <i class="fas fa-university fa-3x mb-3 text-warning"></i>
+                    <h4>Step 3: Enrollment Complete</h4>
+                    <p>Once approved, finalize your enrollment and start learning!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="container mt-5">
+        <h2 class="text-center mb-4">Frequently Asked Questions</h2>
+        <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                        What are the requirements for enrollment?
+                    </button>
+                </h2>
+                <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        You need to submit an ID, proof of previous education, and a completed application form.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                        How long does approval take?
+                    </button>
+                </h2>
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        The approval process usually takes 3-5 business days.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                        Can I track my enrollment status?
+                    </button>
+                </h2>
+                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Yes, you can log in to your account and check your application status.
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <script>
-        document.getElementById("loginForm").addEventListener("submit", async function(event) {
-            event.preventDefault();
+    <!-- Footer -->
+    <footer class="footer mt-5">
+        <p>&copy; 2025 Enrollment System | Designed for a seamless student experience</p>
+    </footer>
 
-            let email = document.getElementById("email").value;
-            let password = document.getElementById("password").value;
-            let alertMessage = document.getElementById("alertMessage");
-            let loginButton = document.querySelector(".btn-user");
-            let spinnerOverlay = document.querySelector(".spinner-overlay");
-
-            // Show loading spinner
-            spinnerOverlay.style.display = "flex";
-            loginButton.disabled = true;
-
-            try {
-                let response = await fetch("controllers/LoginController.php", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/x-www-form-urlencoded",
-                    },
-                    body: new URLSearchParams({
-                        email: email,
-                        password: password
-                    })
-                });
-
-                let result = await response.json();
-                
-                // Hide spinner after response is received
-                spinnerOverlay.style.display = "none";
-                loginButton.disabled = false;
-
-                if (result.status === "success") {
-                    window.location.href = result.redirect;
-                } else {
-                    alertMessage.style.display = "block";
-                    alertMessage.innerHTML = result.message;
-                }
-            } catch (error) {
-                spinnerOverlay.style.display = "none";
-                loginButton.disabled = false;
-                alertMessage.style.display = "block";
-                alertMessage.innerHTML = "An error occurred. Please try again.";
-            }
-        });
-    </script>
-
-<?php include('partials/foot.php'); ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -11,6 +11,7 @@
             background-color: #f8f9fa;
         }
         .hero-section {
+            position: relative;
             background: url('https://source.unsplash.com/1600x900/?education,students') no-repeat center center/cover;
             height: 100vh;
             color: white;
@@ -20,20 +21,36 @@
             text-align: center;
             flex-direction: column;
             padding: 20px;
-            backdrop-filter: blur(3px);
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
         }
         .hero-section h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: bold;
         }
         .btn-custom {
             padding: 12px 25px;
             font-size: 1.2rem;
+            margin: 10px;
         }
         .steps {
             background-color: #fff;
             padding: 50px 20px;
             border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .steps:hover {
+            transform: translateY(-10px);
         }
         .footer {
             background-color: #000;
@@ -45,18 +62,39 @@
 </head>
 <body>
 
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Enrollment System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#how-it-works">How It Works</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-primary text-white" href="public/admission-process.php">Register</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
     <section class="hero-section">
-        <h1>Welcome to the Online Enrollment System</h1>
-        <p class="lead">A seamless way to register and enroll for your academic journey</p>
-        <div>
-            <a href="register.php" class="btn btn-primary btn-custom">Register Now</a>
-            <a href="login.php" class="btn btn-outline-light btn-custom">Login</a>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Welcome to the Online Enrollment System</h1>
+            <p class="lead">A seamless way to register and enroll for your academic journey</p>
+            <div>
+                <a href="public/admission-process.php" class="btn btn-primary btn-custom">Register Now</a>
+                <a href="login.php" class="btn btn-outline-light btn-custom">Login</a>
+            </div>
         </div>
     </section>
 
     <!-- How It Works Section -->
-    <section class="container mt-5">
+    <section id="how-it-works" class="container mt-5">
         <h2 class="text-center mb-4">How to Enroll</h2>
         <div class="row text-center">
             <div class="col-md-4">
@@ -84,7 +122,7 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="container mt-5">
+    <section id="faq" class="container mt-5">
         <h2 class="text-center mb-4">Frequently Asked Questions</h2>
         <div class="accordion" id="faqAccordion">
             <div class="accordion-item">
@@ -108,18 +146,6 @@
                 <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                     <div class="accordion-body">
                         The approval process usually takes 3-5 business days.
-                    </div>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                        Can I track my enrollment status?
-                    </button>
-                </h2>
-                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                    <div class="accordion-body">
-                        Yes, you can log in to your account and check your application status.
                     </div>
                 </div>
             </div>

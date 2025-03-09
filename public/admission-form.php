@@ -95,10 +95,43 @@ $current_requirements = $requirements[$enrollment_type];
 
                 <!-- FINAL SUBMIT BUTTON -->
                 <div class="text-end mt-4">
-                    <button type="submit" class="btn btn-success btn-lg">Submit Application</button>
+                    <button type="button" class="btn btn-success btn-lg" id="previewButton">Review & Submit</button>
                 </div>
+
             </form>
             <!-- END OF FORM -->
+        </div>
+        
+        <!-- SUMMARY MODAL -->
+        <div class="modal fade" id="summaryModal" tabindex="-1" aria-labelledby="summaryModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="summaryModalLabel">Review Your Application</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h6><strong>Basic Information</strong></h6>
+                        <p id="summaryBasicInfo"></p>
+
+                        <h6><strong>Address Information</strong></h6>
+                        <p id="summaryAddress"></p>
+
+                        <h6><strong>Parent/Guardian Information</strong></h6>
+                        <p id="summaryGuardian"></p>
+
+                        <h6><strong>Enrollment Information</strong></h6>
+                        <p id="summaryEnrollment"></p>
+
+                        <h6><strong>Educational Background</strong></h6>
+                        <p id="summaryEducation"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Edit</button>
+                        <button type="submit" class="btn btn-success" id="finalSubmitButton">Submit Application</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="col-md-4">

@@ -6,10 +6,12 @@
     <title>Bestlink College - Login & Enrollment</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
     <style>
         /* General Styling */
         body {
-            background-color: #eef2f7; /* Light background */
+            background-color: #eef2f7;
             font-family: 'Poppins', sans-serif;
             display: flex;
             justify-content: center;
@@ -71,24 +73,6 @@
             box-shadow: 0px 8px 20px rgba(0, 91, 187, 0.3);
         }
 
-        /* Enroll Now Button */
-        .btn-enroll {
-            background-color: #008000;
-            color: white;
-            font-weight: bold;
-            padding: 14px;
-            border-radius: 8px;
-            width: 100%;
-            transition: all 0.3s ease-in-out;
-            border: none;
-        }
-
-        .btn-enroll:hover {
-            background-color: #006400;
-            transform: scale(1.05);
-            box-shadow: 0px 8px 20px rgba(0, 128, 0, 0.3);
-        }
-
         /* Footer */
         .footer {
             text-align: center;
@@ -103,6 +87,24 @@
                 width: 90%;
             }
         }
+
+        /* Error & Success Messages */
+        .alert {
+            display: none;
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .alert-success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .alert-danger {
+            background-color: #dc3545;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -112,12 +114,15 @@
     <h3><i class="fas fa-user-circle"></i> Login</h3>
     <p>Sign in to access your account</p>
 
-    <form action="process_login.php" method="POST">
+    <form id="loginForm">
+        <div class="alert alert-danger" id="errorMessage"></div>
+        <div class="alert alert-success" id="successMessage"></div>
+
         <div class="mb-3">
-            <input type="text" name="username" class="form-control" placeholder="Enter your username" required>
+            <input type="text" name="username" id="username" class="form-control" placeholder="Enter your username" required>
         </div>
         <div class="mb-3">
-            <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
+            <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password" required>
         </div>
         <button type="submit" class="btn btn-custom">Login</button>
     </form>
@@ -126,6 +131,37 @@
     <p class="footer">&copy; 2025 Bestlink College - All Rights Reserved</p>
 </div>
 
+<script>
+$(document).ready(function () {
+    $("#loginForm").submit(function (event) {
+        event.preventDefault(); // Prevent page reload
+
+        var username = $("#username").val();
+        var password = $("#password").val();
+
+        $.ajax({
+            url: "../controllers/AuthController.php?action=login",
+            type: "POST",
+            data: { username: username, password: password },
+            success: function (response) {
+                var res = JSON.parse(response);
+
+                if (res.status === "success") {
+                    $("#successMessage").text(res.message).fadeIn();
+                    setTimeout(function () {
+                        window.location.href = res.redirect; // Redirect to dashboard
+                    }, 2000);
+                } else {
+                    $("#errorMessage").text(res.message).fadeIn();
+                }
+            },
+            error: function () {
+                $("#errorMessage").text("An error occurred. Please try again.").fadeIn();
+            }
+        });
+    });
+});
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

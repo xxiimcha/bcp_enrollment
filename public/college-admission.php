@@ -6,116 +6,69 @@
     <title>College Admission Form</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <style>
-        body {
-            background-color: #eef2f7;
-        }
-        .container-section {
-            padding: 50px 20px;
-        }
-        .form-card {
-            border: 2px solid #0d6efd;
-            border-radius: 10px;
-            padding: 30px;
-            background-color: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .step {
-            background: #0d6efd;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-        }
-        .step i {
-            margin-right: 10px;
-        }
-        .btn-custom {
-            background-color: #0d6efd;
-            color: white;
-            font-weight: bold;
-            padding: 10px 20px;
-            border-radius: 20px;
-            transition: background 0.3s;
-        }
-        .btn-custom:hover {
-            background-color: #0b5ed7;
-        }
-        .requirements-card {
-            border: 2px solid #0d6efd;
-            border-radius: 10px;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div class="container container-section">
-        <h2 class="text-center mb-4 text-primary">College Admission</h2>
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="form-card">
-                    <div class="step">
-                        <i class="fas fa-user"></i> <strong>Step 1: Basic Information</strong>
-                    </div>
-                    <form>
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label class="form-label">Admission Type *</label>
-                                <select class="form-select" required>
-                                    <option value="" selected disabled>Select Admission Type</option>
-                                    <option value="new_regular">New Regular</option>
-                                    <option value="transferee">Transferee</option>
-                                    <option value="returnee">Returnee</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6 d-flex align-items-center">
-                                <input type="checkbox" id="workingStudent" class="me-2">
-                                <label for="workingStudent" class="form-label">Are you a Working Student?</label>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-3">
-                                <label class="form-label">Last Name *</label>
-                                <input type="text" class="form-control" required>
-                            </div>
-                            <div class="col-md-3">
-                                <label class="form-label">First Name *</label>
-                                <input type="text" class="form-control" required>
-                            </div>
-                            <div class="col-md-3">
-                                <label class="form-label">Middle Name</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="col-md-3">
-                                <label class="form-label">Suffix</label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <div class="text-end mt-4">
-                            <button type="button" class="btn btn-custom">Next</button>
-                        </div>
-                    </form>
-                </div>
+
+<!-- ======= HEADER ======= -->
+<header class="bg-primary text-white py-3">
+    <div class="container text-center">
+        <h3 class="mb-1">Bestlink College of the Philippines</h3>
+        <p class="mb-0">College Admission Form</p>
+    </div>
+</header>
+
+<!-- ======= MAIN CONTENT ======= -->
+<div class="container container-section">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="accordion" id="admissionAccordion">
+                
+                <!-- Step 1: Basic Information -->
+                <?php include('forms/step1_basic_info.php'); ?>
+
+                <!-- Step 2: Address Information -->
+                <?php include('forms/step2_address_info.php'); ?>
+
+                <!-- Step 3: Parent/Guardian Information -->
+                <?php include('forms/step3_guardian_info.php'); ?>
+
+                <!-- Step 4: Enrollment Information -->
+                <?php include('forms/step4_enrollment_info.php'); ?>
+
+                <!-- Step 5: Educational Background -->
+                <?php include('forms/step5_educational_background.php'); ?>
+                
+                <!-- Step 6: Upload Requirements -->
+                <?php include('forms/step6_upload_requirement.php'); ?>
+
             </div>
-            <div class="col-md-4">
-                <div class="requirements-card">
-                    <h4 class="text-primary"><i class="fas fa-file-alt"></i> Enrollment Requirements</h4>
-                    <ul>
-                        <li>Form 138 (Report Card)</li>
-                        <li>Form 137</li>
-                        <li>Certificate of Good Moral Character</li>
-                        <li>PSA Authenticated Birth Certificate</li>
-                        <li>2x2 ID Picture (White Background) - 2 pcs</li>
-                        <li>Barangay Clearance</li>
-                    </ul>
-                </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="requirements-card">
+                <h5 class="text-primary">Enrollment Requirements</h5>
+                <ul>
+                    <li>Form 138 (Report Card)</li>
+                    <li>Form 137</li>
+                    <li>Certificate of Good Moral Character</li>
+                    <li>PSA Authenticated Birth Certificate</li>
+                    <li>2x2 ID Picture (White Background) - 2 pcs</li>
+                    <li>Barangay Clearance</li>
+                </ul>
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</div>
+
+<!-- ======= FOOTER ======= -->
+<footer class="bg-dark text-white text-center py-3 mt-5">
+    <p class="mb-0">© 2025 Bestlink College of the Philippines - All Rights Reserved</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/scripts.js"></script>
+<script src="scripts/form.js"></script>
+
 </body>
 </html>

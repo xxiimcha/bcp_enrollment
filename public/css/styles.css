@@ -1,0 +1,191 @@
+/* General Styling */
+body {
+    background-color: #eef2f7;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Full-width Responsive Container */
+.container-section {
+    padding: 50px 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Modern Accordion Style */
+.accordion {
+    border-radius: 10px;
+    overflow: hidden;
+    border: none;
+}
+
+.accordion-button {
+    background-color: #0057D9 !important; /* Updated Blue */
+    color: white !important;
+    font-weight: 600;
+    border-radius: 8px !important;
+    padding: 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #0048B3 !important; /* Slightly darker blue when opened */
+    box-shadow: none !important;
+}
+
+.accordion-button:focus {
+    box-shadow: none !important;
+}
+
+/* Accordion Content */
+.accordion-body {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Smooth Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Form Fields */
+.form-label {
+    font-weight: 600;
+    color: #222;
+    font-size: 15px;
+}
+
+.form-control,
+.form-select {
+    border-radius: 8px;
+    border: 1px solid #b0c4de;
+    padding: 14px;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+    background-color: #f9fbfd;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #0057D9;
+    box-shadow: 0 0 10px rgba(0, 87, 217, 0.3);
+}
+
+/* Button Styling */
+.btn-custom {
+    background-color: #0057D9;
+    color: white;
+    font-weight: bold;
+    padding: 14px 22px;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out, transform 0.2s;
+    display: inline-block;
+    text-align: center;
+    border: none;
+}
+
+.btn-custom:hover {
+    background-color: #0048B3;
+    transform: scale(1.05);
+    box-shadow: 0px 10px 25px rgba(0, 91, 187, 0.4);
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    font-weight: bold;
+    padding: 14px 22px;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out, transform 0.2s;
+    display: inline-block;
+    text-align: center;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    transform: scale(1.05);
+    box-shadow: 0px 8px 22px rgba(90, 98, 104, 0.3);
+}
+
+/* Requirements Box */
+.requirements-card {
+    border: 2px solid #0057D9;
+    border-radius: 10px;
+    padding: 25px;
+    background-color: white;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease-in-out;
+}
+
+.requirements-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 22px rgba(0, 0, 0, 0.15);
+}
+
+.requirements-card h5 {
+    color: #0057D9;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.requirements-card ul {
+    padding-left: 20px;
+    font-size: 15px;
+    list-style: none;
+}
+
+.requirements-card ul li {
+    padding: 5px 0;
+    position: relative;
+}
+
+.requirements-card ul li::before {
+    content: "✔";
+    font-size: 16px;
+    font-weight: bold;
+    color: #0057D9;
+    margin-right: 8px;
+}
+
+/* Header Styling */
+header {
+    background-color: #0057D9;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Make the form more responsive */
+@media (max-width: 768px) {
+    .container-section {
+        padding: 20px;
+    }
+
+    .btn-custom, .btn-secondary {
+        width: 100%;
+        text-align: center;
+    }
+
+    .accordion-body {
+        padding: 20px;
+    }
+}

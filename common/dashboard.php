@@ -1,4 +1,4 @@
-<?php include('../partials/head.php');?>
+<?php include('../partials/head.php'); ?>
 
 <div id="wrapper">
     <?php include('../partials/sidebar.php'); ?>
@@ -8,58 +8,133 @@
             <?php include('../partials/nav.php'); ?>
 
             <div class="container-fluid">
-                <h1 class="h3 mb-4 text-gray-800">Dashboard</h1>
+                <h1 class="h3 mb-4 text-gray-800">Enrollment Dashboard</h1>
 
-                <div class="row" id="dashboard-cards">
-                    <!-- Cards will be loaded dynamically via AJAX -->
-                </div>
-
-                <!-- Chart for Completed Medical Cases -->
+                <!-- ✅ STATISTICS CARDS ROW -->
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Completed Medical Cases per Day</h6>
-                            </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card shadow-sm border-left-primary">
                             <div class="card-body">
-                                <div id="admissionsChart"></div> <!-- Chart Container -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Medical Schedule Section (Dynamically Loaded) -->
-                <!-- <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Medical Schedule</h6>
-                            </div>
-                            <div class="card-body">
-                                <div id="medicalScheduleContainer">
-                                    <p class="text-center">Loading medical schedule...</p>
+                                <div class="row">
+                                    <div class="col">
+                                        <h6 class="text-primary font-weight-bold">Total Students</h6>
+                                        <h4 class="font-weight-bold text-dark" id="totalStudents">Loading...</h4>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-user-graduate fa-2x text-gray-300"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div> -->
 
-                <!-- Lab Schedule Overview -->
-                <!-- <div class="row">
-                    <div class="col-lg-12">
-                        <div id="labScheduleContainer">
-                            <p class="text-center">Loading lab schedule...</p>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card shadow-sm border-left-warning">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h6 class="text-warning font-weight-bold">Pending Applications</h6>
+                                        <h4 class="font-weight-bold text-dark" id="pendingApplications">Loading...</h4>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-clock fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>-->
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card shadow-sm border-left-success">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h6 class="text-success font-weight-bold">Approved Applications</h6>
+                                        <h4 class="font-weight-bold text-dark" id="approvedApplications">Loading...</h4>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-check-circle fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card shadow-sm border-left-danger">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h6 class="text-danger font-weight-bold">Rejected Applications</h6>
+                                        <h4 class="font-weight-bold text-dark" id="rejectedApplications">Loading...</h4>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-times-circle fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ✅ CHARTS ROW (Enrollment Trends & Program Breakdown) -->
+                <div class="row mt-4">
+                    <div class="col-lg-6">
+                        <div class="card shadow-sm">
+                            <div class="card-header bg-primary text-white">
+                                <h6 class="m-0">Enrollment Trends</h6>
+                            </div>
+                            <div class="card-body">
+                                <div id="enrollmentTrendsChart" style="height: 300px;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card shadow-sm">
+                            <div class="card-header bg-success text-white">
+                                <h6 class="m-0">Program Enrollment Breakdown</h6>
+                            </div>
+                            <div class="card-body">
+                                <div id="programBreakdownChart" style="height: 300px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ✅ PENDING APPLICATIONS TABLE -->
+                <div class="row mt-4">
+                    <div class="col-lg-12">
+                        <div class="card shadow-sm">
+                            <div class="card-header bg-warning text-dark">
+                                <h6 class="m-0">Pending Applications</h6>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-striped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>Student Name</th>
+                                            <th>Course</th>
+                                            <th>Application Date</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="pendingApplicationsTable">
+                                        <tr><td colspan="4" class="text-center">Loading...</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>
 
-        <footer class="sticky-footer bg-white">
+        <footer class="sticky-footer bg-white mt-4">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2025</span>
+                    <span>&copy; 2025 Bestlink College - All Rights Reserved</span>
                 </div>
             </div>
         </footer>
@@ -72,101 +147,57 @@
 <script>
     $(document).ready(function () {
         loadDashboardData();
-        loadMedicalSchedule();
-        loadLabSchedule();
 
-        /** 
-         * Function to Load Dashboard Data 
-         */
         function loadDashboardData() {
             $.ajax({
                 url: '../controllers/DashboardController.php?action=all',
                 type: 'GET',
                 dataType: 'json',
                 success: function (response) {
-                    console.log("Dashboard Data Response:", response); // Debugging
                     if (response.success) {
-                        $("#dashboard-cards").html(response.html);
+                        $("#totalStudents").text(response.totalStudents);
+                        $("#pendingApplications").text(response.pendingApplications);
+                        $("#approvedApplications").text(response.approvedApplications);
+                        $("#rejectedApplications").text(response.rejectedApplications);
 
-                        if (response.chartData.labels.length > 0) {
-                            updateMedicalChart(response.chartData.labels, response.chartData.data);
-                        } else {
-                            $("#admissionsChart").html("<p class='text-center'>No data available.</p>");
+                        if (response.enrollmentTrends.labels.length > 0) {
+                            updateEnrollmentTrendsChart(response.enrollmentTrends.labels, response.enrollmentTrends.data);
                         }
-                    } else {
-                        console.error("Error loading data: " + response.error);
+
+                        if (response.programBreakdown.labels.length > 0) {
+                            updateProgramBreakdownChart(response.programBreakdown.labels, response.programBreakdown.data);
+                        }
+
+                        $("#pendingApplicationsTable").html(response.pendingApplicationsHTML);
                     }
                 },
-                error: function (xhr, status, error) {
-                    console.error("AJAX Error:", status, error);
+                error: function () {
+                    console.error("Error loading dashboard data");
                 }
             });
         }
 
-        /** 
-         * Function to Update Medical Cases Chart 
-         */
-        function updateMedicalChart(labels, data) {
-            $("#admissionsChart").html(""); // Clear previous chart
+        function updateEnrollmentTrendsChart(labels, data) {
+            $("#enrollmentTrendsChart").html("");
             var options = {
-                chart: {
-                    type: 'line',
-                    height: 350
-                },
-                series: [{
-                    name: 'Completed Medical Cases',
-                    data: data
-                }],
-                xaxis: {
-                    categories: labels
-                },
-                colors: ['#28a745'],
-                stroke: {
-                    curve: 'smooth'
-                },
-                dataLabels: {
-                    enabled: false
-                }
+                chart: { type: 'line', height: 300 },
+                series: [{ name: 'Enrollments', data: data }],
+                xaxis: { categories: labels },
+                colors: ['#007bff'],
+                stroke: { curve: 'smooth' },
+                dataLabels: { enabled: false }
             };
-
-            var chart = new ApexCharts(document.querySelector("#admissionsChart"), options);
-            chart.render();
+            new ApexCharts(document.querySelector("#enrollmentTrendsChart"), options).render();
         }
 
-        /**
-         * Function to Load Medical Schedule
-         */
-        function loadMedicalSchedule() {
-            $.ajax({
-                url: '../controllers/DashboardController.php?action=medical_schedule',
-                type: 'GET',
-                dataType: 'html',
-                success: function (response) {
-                    $("#medicalScheduleContainer").html(response);
-                },
-                error: function () {
-                    $("#medicalScheduleContainer").html("<p class='text-center text-danger'>Failed to load medical schedule.</p>");
-                }
-            });
+        function updateProgramBreakdownChart(labels, data) {
+            $("#programBreakdownChart").html("");
+            var options = {
+                chart: { type: 'pie', height: 300 },
+                series: data,
+                labels: labels
+            };
+            new ApexCharts(document.querySelector("#programBreakdownChart"), options).render();
         }
-
-        function loadLabSchedule() {
-            $.ajax({
-                url: '../controllers/DashboardController.php?action=lab_schedule',
-                type: 'GET',
-                dataType: 'json',
-                success: function (response) {
-                    if (response.success) {
-                        $("#labScheduleContainer").html(response.labSchedule);
-                    } else {
-                        $("#labScheduleContainer").html("<p class='text-center text-danger'>Failed to load lab schedule.</p>");
-                    }
-                },
-                error: function () {
-                    $("#labScheduleContainer").html("<p class='text-center text-danger'>Failed to fetch data.</p>");
-                }
-            });
-        }
-
     });
 </script>

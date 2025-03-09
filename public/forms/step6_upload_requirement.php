@@ -9,35 +9,44 @@
             <form action="process_upload.php" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="student_id" value="<?php echo $_SESSION['student_id']; ?>">
 
-                <div class="mb-3">
-                    <label class="form-label">Form 138 (Report Card)</label>
-                    <input type="file" class="form-control" name="form_138" required>
-                </div>
+                <?php
+                // Determine the enrollment type from URL
+                $enrollment_type = isset($_GET['college']) ? 'college' : (isset($_GET['shs']) ? 'shs' : 'default');
 
-                <div class="mb-3">
-                    <label class="form-label">Form 137</label>
-                    <input type="file" class="form-control" name="form_137" required>
-                </div>
+                // Define required documents for College & Senior High School
+                $upload_requirements = [
+                    'college' => [
+                        'Form 138 (Report Card)' => 'form_138',
+                        'Form 137' => 'form_137',
+                        'Certificate of Good Moral Character' => 'good_moral',
+                        'PSA Authenticated Birth Certificate' => 'birth_certificate',
+                        'Passport Size ID Picture (White Background, Formal Attire) - 2 pcs' => 'id_picture',
+                        'Barangay Clearance' => 'barangay_clearance'
+                    ],
+                    'shs' => [
+                        'Form 138 (Report Card)' => 'form_138',
+                        'Form 137' => 'form_137',
+                        'Certificate of Good Moral Character' => 'good_moral',
+                        '2x2 ID Picture (White Background) - 2 pcs' => 'id_picture',
+                        'Photocopy of NCAE Result' => 'ncae_result',
+                        'ESC Certificate (if applicable)' => 'esc_certificate',
+                        'PSA Authenticated Birth Certificate' => 'birth_certificate',
+                        'Barangay Clearance' => 'barangay_clearance',
+                        'Photocopy of Diploma' => 'diploma'
+                    ]
+                ];
 
-                <div class="mb-3">
-                    <label class="form-label">Certificate of Good Moral Character</label>
-                    <input type="file" class="form-control" name="good_moral" required>
-                </div>
+                // Get the correct requirements based on the enrollment type
+                $current_uploads = $upload_requirements[$enrollment_type] ?? [];
 
-                <div class="mb-3">
-                    <label class="form-label">PSA Authenticated Birth Certificate</label>
-                    <input type="file" class="form-control" name="birth_certificate" required>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">2x2 ID Picture (White Background)</label>
-                    <input type="file" class="form-control" name="id_picture" required>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Barangay Clearance</label>
-                    <input type="file" class="form-control" name="barangay_clearance" required>
-                </div>
+                // Loop through the required documents and generate file upload fields dynamically
+                foreach ($current_uploads as $label => $name) {
+                    echo '<div class="mb-3">';
+                    echo '<label class="form-label">' . $label . '</label>';
+                    echo '<input type="file" class="form-control" name="' . $name . '" required>';
+                    echo '</div>';
+                }
+                ?>
 
                 <div class="text-end mt-3">
                     <button type="submit" class="btn btn-primary">Upload Documents</button>

@@ -8,17 +8,17 @@ body {
     color: #333;
 }
 
-/* Full-width Responsive Container */
+/* Full-width Responsive Container (No Margin) */
 .container-section {
     padding: 50px 20px;
     width: 100%;
-    max-width: 1200px;
-    margin: auto;
+    max-width: 100%;
+    margin: 0;
 }
 
 /* Modern Accordion Style */
 .accordion {
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
     border: none;
 }
@@ -27,7 +27,7 @@ body {
     background-color: #0057D9 !important; /* Updated Blue */
     color: white !important;
     font-weight: 600;
-    border-radius: 8px !important;
+    border-radius: 10px !important;
     padding: 16px;
     transition: all 0.3s ease-in-out;
 }
@@ -44,9 +44,9 @@ body {
 /* Accordion Content */
 .accordion-body {
     background-color: #ffffff;
-    border-radius: 10px;
-    padding: 25px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     animation: fadeIn 0.3s ease-in-out;
 }
 
@@ -71,7 +71,7 @@ body {
 
 .form-control,
 .form-select {
-    border-radius: 8px;
+    border-radius: 10px;
     border: 1px solid #b0c4de;
     padding: 14px;
     font-size: 16px;
@@ -83,7 +83,7 @@ body {
 .form-control:focus,
 .form-select:focus {
     border-color: #0057D9;
-    box-shadow: 0 0 10px rgba(0, 87, 217, 0.3);
+    box-shadow: 0 0 12px rgba(0, 87, 217, 0.35);
 }
 
 /* Button Styling */
@@ -92,7 +92,7 @@ body {
     color: white;
     font-weight: bold;
     padding: 14px 22px;
-    border-radius: 8px;
+    border-radius: 10px;
     transition: all 0.3s ease-in-out, transform 0.2s;
     display: inline-block;
     text-align: center;
@@ -101,8 +101,8 @@ body {
 
 .btn-custom:hover {
     background-color: #0048B3;
-    transform: scale(1.05);
-    box-shadow: 0px 10px 25px rgba(0, 91, 187, 0.4);
+    transform: scale(1.06);
+    box-shadow: 0px 12px 28px rgba(0, 91, 187, 0.4);
 }
 
 .btn-secondary {
@@ -110,7 +110,7 @@ body {
     color: white;
     font-weight: bold;
     padding: 14px 22px;
-    border-radius: 8px;
+    border-radius: 10px;
     transition: all 0.3s ease-in-out, transform 0.2s;
     display: inline-block;
     text-align: center;
@@ -119,23 +119,23 @@ body {
 
 .btn-secondary:hover {
     background-color: #5a6268;
-    transform: scale(1.05);
-    box-shadow: 0px 8px 22px rgba(90, 98, 104, 0.3);
+    transform: scale(1.06);
+    box-shadow: 0px 10px 24px rgba(90, 98, 104, 0.3);
 }
 
 /* Requirements Box */
 .requirements-card {
     border: 2px solid #0057D9;
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 25px;
     background-color: white;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
     transition: transform 0.3s ease-in-out;
 }
 
 .requirements-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 12px 22px rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
 }
 
 .requirements-card h5 {
@@ -151,8 +151,9 @@ body {
 }
 
 .requirements-card ul li {
-    padding: 5px 0;
+    padding: 6px 0;
     position: relative;
+    font-size: 16px;
 }
 
 .requirements-card ul li::before {
@@ -168,16 +169,27 @@ header {
     background-color: #0057D9;
     color: white;
     text-align: center;
-    padding: 20px;
-    font-size: 20px;
+    padding: 25px;
+    font-size: 22px;
     font-weight: bold;
     letter-spacing: 1px;
+    border-bottom: 4px solid #0048B3;
 }
 
-/* Make the form more responsive */
-@media (max-width: 768px) {
+/* Footer Styling */
+footer {
+    background-color: #0048B3;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
     .container-section {
-        padding: 20px;
+        padding: 30px 15px;
     }
 
     .btn-custom, .btn-secondary {
@@ -187,5 +199,25 @@ header {
 
     .accordion-body {
         padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container-section {
+        padding: 20px;
+    }
+
+    header {
+        font-size: 20px;
+        padding: 18px;
+    }
+
+    footer {
+        font-size: 13px;
+    }
+
+    .btn-custom, .btn-secondary {
+        width: 100%;
+        text-align: center;
     }
 }

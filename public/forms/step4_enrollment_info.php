@@ -9,11 +9,10 @@
             <div class="row mb-3">
                 <div class="col-md-12">
                     <label class="form-label">Preferred Branch</label>
-                    <select class="form-select" required>
+                    <select class="form-select" id="branchSelect" required>
                         <option value="" selected disabled>Select Branch</option>
                         <option value="main">Main Branch</option>
-                        <option value="branch1">Branch 1</option>
-                        <option value="branch2">Branch 2</option>
+                        <option value="bulacan">Bulacan Branch</option>
                     </select>
                 </div>
             </div>
@@ -21,7 +20,7 @@
                 <div class="col-md-8">
                     <label class="form-label">Course/Strand</label>
                     <select class="form-select" id="courseSelect" required>
-                        <option value="" selected disabled>Loading...</option>
+                        <option value="" selected disabled>Select a Branch First</option>
                     </select>
                 </div>
                 <div class="col-md-4">
@@ -41,17 +40,15 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
+    const branchSelect = document.getElementById("branchSelect");
     const courseSelect = document.getElementById("courseSelect");
     const yearLevelSelect = document.getElementById("yearLevelSelect");
 
-    // Determine if the form is for College or SHS
     const urlParams = new URLSearchParams(window.location.search);
-    const isCollege = urlParams.has("college"); // Checks if "?college" is in URL
+    const isCollege = urlParams.has("college");
 
-    // Function to populate the Year Level dropdown
     function populateYearLevels() {
-        yearLevelSelect.innerHTML = ''; // Clear existing options
-
+        yearLevelSelect.innerHTML = '';
         if (isCollege) {
             yearLevelSelect.innerHTML += `
                 <option value="1">1st Year</option>
@@ -67,27 +64,43 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Fetch courses/strands from API
-    fetch("http://localhost/bcp_registrar/api/courses.php")
-        .then(response => response.json())
-        .then(data => {
-            if (data.success && data.courses) {
-                courseSelect.innerHTML = '<option value="" selected disabled>Select Course/Strand</option>';
+    function fetchCourses(branch) {
+        courseSelect.innerHTML = '<option value="" selected disabled>Loading...</option>';
+        
+        fetch("http://localhost/bcp_registrar/api/courses.php")
+            .then(response => response.json())
+            .then(data => {
+                if (data.success && data.courses) {
+                    courseSelect.innerHTML = '<option value="" selected disabled>Select Course/Strand</option>';
+                    
+                    data.courses.forEach(course => {
+                        if ((isCollege && course.level === "College") || (!isCollege && course.level === "SHS")) {
+                            if ((branch === "main" && course.main_branch === "1") || 
+                                (branch === "bulacan" && course.bulacan_branch === "1")) {
+                                courseSelect.innerHTML += `<option value="${course.code}">${course.name}</option>`;
+                            }
+                        }
+                    });
 
-                data.courses.forEach(course => {
-                    if ((isCollege && course.level === "College") || (!isCollege && course.level === "SHS")) {
-                        courseSelect.innerHTML += `<option value="${course.code}">${course.name}</option>`;
-                    }
-                });
-
-                populateYearLevels(); // Set year level options based on selection
-            } else {
+                    populateYearLevels();
+                } else {
+                    courseSelect.innerHTML = '<option value="" disabled>Error loading courses</option>';
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching courses:", error);
                 courseSelect.innerHTML = '<option value="" disabled>Error loading courses</option>';
-            }
-        })
-        .catch(error => {
-            console.error("Error fetching courses:", error);
-            courseSelect.innerHTML = '<option value="" disabled>Error loading courses</option>';
-        });
+            });
+    }
+
+    branchSelect.addEventListener("change", function () {
+        const selectedBranch = branchSelect.value;
+        if (selectedBranch) {
+            fetchCourses(selectedBranch);
+        } else {
+            courseSelect.innerHTML = '<option value="" selected disabled>Select a Branch First</option>';
+        }
+    });
+
 });
 </script>

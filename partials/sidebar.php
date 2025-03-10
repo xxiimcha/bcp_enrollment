@@ -23,7 +23,7 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Nav Item - Admissions -->
+    <!-- Nav Item - Student Admissions -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#admissionsMenu"
             aria-expanded="true" aria-controls="admissionsMenu">
@@ -32,7 +32,7 @@
         </a>
         <div id="admissionsMenu" class="collapse" aria-labelledby="admissionsHeading" data-parent="#accordionSidebar">
             <div class="bg-dark py-2 collapse-inner rounded">
-                <a class="collapse-item text-white" href="../admissions/applications.php">Application Submissions</a>
+                <a class="collapse-item text-white" href="../admissions/applications.php">Applications</a>
                 <a class="collapse-item text-white" href="../admissions/approve.php">Approve Applications</a>
                 <a class="collapse-item text-white" href="../admissions/rejected.php">Rejected Applications</a>
             </div>
@@ -51,7 +51,6 @@
                 <a class="collapse-item text-white" href="../enrollment/new.php">New Enrollments</a>
                 <a class="collapse-item text-white" href="../enrollment/approve.php">Approve Enrollment</a>
                 <a class="collapse-item text-white" href="../enrollment/withdrawals.php">Withdrawals & Dropped</a>
-                <a class="collapse-item text-white" href="../enrollment/history.php">Enrollment History</a>
             </div>
         </div>
     </li>
@@ -61,7 +60,7 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#studentRecordsMenu"
             aria-expanded="true" aria-controls="studentRecordsMenu">
             <i class="fas fa-users"></i>
-            <span>Student Enrollment Records</span>
+            <span>Enrollment Records</span>
         </a>
         <div id="studentRecordsMenu" class="collapse" aria-labelledby="studentRecordsHeading" data-parent="#accordionSidebar">
             <div class="bg-dark py-2 collapse-inner rounded">
@@ -71,52 +70,7 @@
         </div>
     </li>
 
-    <!-- Nav Item - Class & Schedule Management -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#scheduleMenu"
-            aria-expanded="true" aria-controls="scheduleMenu">
-            <i class="fas fa-calendar-alt"></i>
-            <span>Class Scheduling</span>
-        </a>
-        <div id="scheduleMenu" class="collapse" aria-labelledby="scheduleHeading" data-parent="#accordionSidebar">
-            <div class="bg-dark py-2 collapse-inner rounded">
-                <a class="collapse-item text-white" href="../schedules/view.php">View Class Schedules</a>
-                <a class="collapse-item text-white" href="../schedules/manage.php">Manage Schedules</a>
-            </div>
-        </div>
-    </li>
-
-    <!-- Nav Item - Faculty Assignments -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#facultyAssignmentsMenu"
-            aria-expanded="true" aria-controls="facultyAssignmentsMenu">
-            <i class="fas fa-chalkboard-teacher"></i>
-            <span>Faculty Assignments</span>
-        </a>
-        <div id="facultyAssignmentsMenu" class="collapse" aria-labelledby="facultyAssignmentsHeading" data-parent="#accordionSidebar">
-            <div class="bg-dark py-2 collapse-inner rounded">
-                <a class="collapse-item text-white" href="../faculty/assignments.php">Class Assignments</a>
-            </div>
-        </div>
-    </li>
-
-    <!-- Nav Item - Payment & Fees -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#paymentsMenu"
-            aria-expanded="true" aria-controls="paymentsMenu">
-            <i class="fas fa-money-bill-wave"></i>
-            <span>Payments & Fees</span>
-        </a>
-        <div id="paymentsMenu" class="collapse" aria-labelledby="paymentsHeading" data-parent="#accordionSidebar">
-            <div class="bg-dark py-2 collapse-inner rounded">
-                <a class="collapse-item text-white" href="../payments/pending.php">Pending Payments</a>
-                <a class="collapse-item text-white" href="../payments/confirmed.php">Confirmed Payments</a>
-                <a class="collapse-item text-white" href="../payments/refunds.php">Refund Requests</a>
-            </div>
-        </div>
-    </li>
-
-    <!-- Nav Item - Reports -->
+    <!-- Nav Item - Reports & Analytics -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#reportMenu"
             aria-expanded="true" aria-controls="reportMenu">
@@ -126,7 +80,6 @@
         <div id="reportMenu" class="collapse" aria-labelledby="reportHeading" data-parent="#accordionSidebar">
             <div class="bg-dark py-2 collapse-inner rounded">
                 <a class="collapse-item text-white" href="../reports/enrollment.php">Enrollment Reports</a>
-                <a class="collapse-item text-white" href="../reports/financial.php">Financial Reports</a>
             </div>
         </div>
     </li>

@@ -5,8 +5,8 @@ include '../config/database.php';
 $action = $_GET['action'] ?? '';
 
 switch ($action) {
-    case 'getPendingApplications':
-        getPendingApplications($conn);
+    case 'getAllApplications':
+        getAllApplications($conn);
         break;
 
     case 'updateStatus':
@@ -18,9 +18,11 @@ switch ($action) {
         break;
 }
 
-// ✅ Fetch all applications with "pending" status
-function getPendingApplications($conn) {
-    $query = "SELECT * FROM student_registration WHERE status = 'pending' ORDER BY created_at DESC";
+// ✅ Fetch all applications (pending, approved, rejected) with course data from student_academics
+function getAllApplications($conn) {
+    $query = "SELECT sr.*, sa.course FROM student_registration sr
+              LEFT JOIN student_academics sa ON sr.id = sa.student_id
+              ORDER BY sr.created_at DESC";
     $result = mysqli_query($conn, $query);
     
     $applications = [];
@@ -28,9 +30,24 @@ function getPendingApplications($conn) {
         $applications[] = $row;
     }
 
+    // Generate table rows for frontend
+    $applicationsHTML = "";
+    foreach ($applications as $app) {
+        $statusBadge = getStatusBadge($app['status']);
+        $course = $app['course'] ?? 'N/A'; // Fetch course from student_academics
+        $studentName = $app['last_name'] . ', ' . $app['first_name']; // Construct full name
+        $applicationsHTML .= "<tr>
+            <td>{$studentName}</td>
+            <td>{$course}</td>
+            <td>{$app['created_at']}</td>
+            <td>{$statusBadge}</td>
+        </tr>";
+    }
+
     echo json_encode([
         "success" => true,
         "total" => count($applications),
+        "applicationsHTML" => $applicationsHTML,
         "data" => $applications
     ]);
 }
@@ -49,6 +66,20 @@ function updateApplicationStatus($conn) {
         }
     } else {
         echo json_encode(["success" => false, "message" => "Invalid request."]);
+    }
+}
+
+// ✅ Helper function to display status badge
+function getStatusBadge($status) {
+    switch ($status) {
+        case 'approved':
+            return '<span class="badge badge-success">Approved</span>';
+        case 'pending':
+            return '<span class="badge badge-warning">Pending</span>';
+        case 'rejected':
+            return '<span class="badge badge-danger">Rejected</span>';
+        default:
+            return '<span class="badge badge-secondary">Unknown</span>';
     }
 }
 

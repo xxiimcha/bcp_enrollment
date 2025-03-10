@@ -1,30 +1,55 @@
-<?php
-include '../config/database.php';
-include '../partials/head.php';
-include '../partials/sidebar.php';
-?>
+<?php include('../partials/head.php'); ?>
 
-<div class="container-fluid">
-    <h3 class="mt-4">Application Submissions</h3>
+<div id="wrapper">
+    <?php include('../partials/sidebar.php'); ?>
 
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead class="table-dark">
-                <tr>
-                    <th>ID</th>
-                    <th>Student Name</th>
-                    <th>Course</th>
-                    <th>Branch</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="applicationTable">
-                <!-- Data will load via AJAX -->
-            </tbody>
-        </table>
+    <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+            <?php include('../partials/nav.php'); ?>
+
+            <div class="container-fluid">
+                <h1 class="h3 mb-4 text-gray-800">All Admission Applications</h1>
+
+                <!-- ✅ APPLICATIONS TABLE -->
+                <div class="row mt-4">
+                    <div class="col-lg-12">
+                        <div class="card shadow-sm">
+                            <div class="card-header bg-primary text-white">
+                                <h6 class="m-0">All Applications</h6>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-striped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>Student Name</th>
+                                            <th>Course</th>
+                                            <th>Application Date</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="applicationsTable">
+                                        <tr><td colspan="4" class="text-center">Loading...</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="sticky-footer bg-white mt-4">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>&copy; 2025 Bestlink College - All Rights Reserved</span>
+                </div>
+            </div>
+        </footer>
     </div>
 </div>
+
+<?php include('../partials/modal.php'); ?>
+<?php include('../partials/foot.php'); ?>
 
 <script>
     $(document).ready(function () {
@@ -32,36 +57,18 @@ include '../partials/sidebar.php';
 
         function loadApplications() {
             $.ajax({
-                url: '../controllers/ApplicationController.php?action=getPendingApplications',
+                url: '../controllers/ApplicationController.php?action=getAllApplications',
                 type: 'GET',
                 dataType: 'json',
                 success: function (response) {
-                    let html = "";
-                    response.data.forEach(student => {
-                        html += `<tr>
-                            <td>${student.id}</td>
-                            <td>${student.last_name}, ${student.first_name}</td>
-                            <td>${student.course}</td>
-                            <td>${student.preferred_branch}</td>
-                            <td><span class="badge bg-warning text-dark">${student.status}</span></td>
-                            <td>
-                                <button class="btn btn-success btn-sm" onclick="updateStatus(${student.id}, 'approved')">Approve</button>
-                                <button class="btn btn-danger btn-sm" onclick="updateStatus(${student.id}, 'rejected')">Reject</button>
-                            </td>
-                        </tr>`;
-                    });
-                    $("#applicationTable").html(html);
+                    if (response.success) {
+                        $("#applicationsTable").html(response.applicationsHTML);
+                    }
+                },
+                error: function () {
+                    console.error("Error loading applications data");
                 }
             });
         }
-
-        function updateStatus(studentId, status) {
-            $.post('../controllers/ApplicationController.php?action=updateStatus', { id: studentId, status: status }, function (response) {
-                alert(response.message);
-                loadApplications();
-            }, 'json');
-        }
     });
 </script>
-
-<?php include '../partials/foot.php'; ?>

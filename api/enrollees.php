@@ -14,7 +14,6 @@ switch ($action) {
         break;
 }
 
-// ✅ Fetch All Enrollees with Details
 function getAllEnrollees($conn) {
     $query = "SELECT * FROM student_registration 
               LEFT JOIN student_academics ON student_registration.id = student_academics.student_id

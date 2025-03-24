@@ -70,7 +70,7 @@ $current_requirements = $requirements[$enrollment_type];
     <div class="row">
         <div class="col-md-8">
             <!-- START OF FORM -->
-            <form action="process_submission.php" method="POST" enctype="multipart/form-data">
+            <form id="enrollmentForm" enctype="multipart/form-data">
                 <div class="accordion" id="admissionAccordion">
                     
                     <!-- Step 1: Basic Information -->
@@ -155,6 +155,31 @@ $current_requirements = $requirements[$enrollment_type];
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../assets/js/scripts.js"></script>
 <script src="scripts/form.js"></script>
+
+<script>
+document.getElementById("enrollmentForm").addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent page reload
+
+    let formData = new FormData(this);
+
+    fetch("process_submission.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        if (data.includes("success")) {
+            alert("Form Submitted Successfully!");
+            document.getElementById("enrollmentForm").reset();
+        } else {
+            alert("Error: " + data);
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+    });
+});
+</script>
 
 </body>
 </html>

@@ -10,11 +10,12 @@ $is_shs = isset($_GET['shs']); // Check if "shs" is in the URL
     </h2>
     <div id="collapseBasicInfo" class="accordion-collapse collapse show">
         <div class="accordion-body">
-            <form id="basicInfoForm">
+            <!-- Remove the form tag and use div instead -->
+            <div id="basicInfoForm">
                 <div class="row mb-3">
                     <div class="col-md-6">
                         <label class="form-label">Admission Type *</label>
-                        <select class="form-select required-field" id="admissionType" required>
+                        <select class="form-select required-field" name="admissionType" id="admissionType" required>
                             <?php if ($is_shs): ?>
                                 <option value="" selected disabled>Select Admission Type</option>
                                 <option value="incoming_grade11">Incoming Grade 11</option>
@@ -31,7 +32,7 @@ $is_shs = isset($_GET['shs']); // Check if "shs" is in the URL
                     <?php if ($is_shs): ?>
                     <div class="col-md-6">
                         <label class="form-label">Learner Reference Number (LRN) *</label>
-                        <input type="text" class="form-control required-field" id="lrn" placeholder="Enter LRN" required>
+                        <input type="text" class="form-control required-field" name="LRN" id="lrn" placeholder="Enter LRN" required>
                     </div>
                     <?php endif; ?>
                 </div>
@@ -39,26 +40,26 @@ $is_shs = isset($_GET['shs']); // Check if "shs" is in the URL
                 <div class="row mb-3">
                     <div class="col-md-3">
                         <label class="form-label">Last Name *</label>
-                        <input type="text" class="form-control required-field" id="lastName" required>
+                        <input type="text" class="form-control required-field" name="lastName" id="lastName" required>
                     </div>
                     <div class="col-md-3">
                         <label class="form-label">First Name *</label>
-                        <input type="text" class="form-control required-field" id="firstName" required>
+                        <input type="text" class="form-control required-field" name="firstName" id="firstName" required>
                     </div>
                     <div class="col-md-3">
                         <label class="form-label">Middle Name</label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" name="middleName" id="middleName">
                     </div>
                     <div class="col-md-3">
                         <label class="form-label">Suffix</label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" name="suffix" id="suffix">
                     </div>
                 </div>
 
                 <div class="row mb-3">
                     <div class="col-md-3">
                         <label class="form-label">Sex *</label>
-                        <select class="form-select required-field" id="sex" required>
+                        <select class="form-select required-field" name="sex" id="sex" required>
                             <option value="" selected disabled>Select</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
@@ -66,7 +67,7 @@ $is_shs = isset($_GET['shs']); // Check if "shs" is in the URL
                     </div>
                     <div class="col-md-3">
                         <label class="form-label">Civil Status *</label>
-                        <select class="form-select required-field" id="civilStatus" required>
+                        <select class="form-select required-field" name="civilStatus" id="civilStatus" required>
                             <option value="" selected disabled>Select</option>
                             <option value="single">Single</option>
                             <option value="married">Married</option>
@@ -74,33 +75,33 @@ $is_shs = isset($_GET['shs']); // Check if "shs" is in the URL
                     </div>
                     <div class="col-md-3">
                         <label class="form-label">Religion</label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" name="religion" id="religion">
                     </div>
                     <div class="col-md-3">
                         <label class="form-label">Birthday *</label>
-                        <input type="date" class="form-control required-field" id="birthday" required>
+                        <input type="date" class="form-control required-field" name="birthday" id="birthday" required>
                     </div>
                 </div>
 
                 <div class="row mb-3">
                     <div class="col-md-3">
                         <label class="form-label">Email Address *</label>
-                        <input type="email" class="form-control required-field" id="email" required>
+                        <input type="email" class="form-control required-field" name="email" id="email" required>
                     </div>
                     <div class="col-md-3">
                         <label class="form-label">Contact Number *</label>
-                        <input type="text" class="form-control required-field" id="contactNumber" required>
+                        <input type="text" class="form-control required-field" name="contactNumber" id="contactNumber" required>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Facebook / Messenger Name *</label>
-                        <input type="text" class="form-control required-field" id="facebookName" required>
+                        <input type="text" class="form-control required-field" name="facebookName" id="facebookName" required>
                     </div>
                 </div>
 
                 <div class="text-end mt-4">
                     <button type="button" class="btn btn-custom" id="nextButton">Next</button>
                 </div>
-            </form>
+            </div> <!-- End of basic info form -->
         </div>
     </div>
 </div>

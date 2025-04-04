@@ -84,6 +84,21 @@
         </div>
     </li>
 
+    <!-- Nav Item - User Management -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#userManagementMenu"
+            aria-expanded="true" aria-controls="userManagementMenu">
+            <i class="fas fa-users-cog"></i>
+            <span>User Management</span>
+        </a>
+        <div id="userManagementMenu" class="collapse" aria-labelledby="userManagementHeading" data-parent="#accordionSidebar">
+            <div class="bg-dark py-2 collapse-inner rounded">
+                <a class="collapse-item text-white" href="../users/index.php">All Users</a>
+                <a class="collapse-item text-white" href="../users/roles.php">Manage Roles</a>
+            </div>
+        </div>
+    </li>
+
     <!-- Nav Item - System Settings -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#settingsMenu"

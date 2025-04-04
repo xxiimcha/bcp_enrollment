@@ -34,7 +34,6 @@ include('public/partials/public_layout.php');
                     <?php else: ?>
                         <div class="d-flex flex-wrap gap-3">
                             <a href="public/admission-process.php" class="btn btn-warning btn-lg px-4">Enroll Now</a>
-                            <a href="auth/" class="btn btn-outline-light btn-lg px-4">Login</a>
                         </div>
                     <?php endif; ?>
                 </div>

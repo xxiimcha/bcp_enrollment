@@ -49,14 +49,16 @@ function login($conn) {
 
 function logout() {
     session_destroy();
-    echo json_encode(["status" => "success", "message" => "Logged out successfully!", "redirect" => "login.php"]);
+    header("Location: ../index.php");
+    exit();
 }
+
 
 function getDashboardURL($role) {
     if ($role === 'admin') {
         return "../common/dashboard.php";
     } elseif ($role === 'student') {
-        return "../public/dashboard.php";
+        return "../public/home/dashboard.php";
     }
     return "../common/dashboard.php";
 }

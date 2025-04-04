@@ -22,7 +22,7 @@ function login($conn) {
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $password = md5(trim($_POST['password']));
 
-    $query = "SELECT id, username, password_hash, role FROM users WHERE username = '$username'";
+    $query = "SELECT id, username, password_hash, role, first_name, last_name FROM users WHERE username = '$username'";
     $result = mysqli_query($conn, $query);
 
     if ($result && mysqli_num_rows($result) > 0) {
@@ -32,6 +32,7 @@ function login($conn) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['role'] = $user['role'];
             $_SESSION['username'] = $user['username'];
+            $_SESSION['full_name'] = $user['first_name'] . ' ' . $user['last_name'];
 
             echo json_encode([
                 "status" => "success",

@@ -5,7 +5,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'student') {
     exit();
 }
 
-require_once('../../config/database.php');
+require_once(BASE_PATH . '/config/database.php');
 
 $pageTitle = "My Profile";
 

@@ -39,22 +39,6 @@
         </div>
     </li>
 
-    <!-- Nav Item - Enrollment Management -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#enrollmentMenu"
-            aria-expanded="true" aria-controls="enrollmentMenu">
-            <i class="fas fa-user-check"></i>
-            <span>Enrollment Management</span>
-        </a>
-        <div id="enrollmentMenu" class="collapse" aria-labelledby="enrollmentHeading" data-parent="#accordionSidebar">
-            <div class="bg-dark py-2 collapse-inner rounded">
-                <a class="collapse-item text-white" href="../enrollment/new.php">New Enrollments</a>
-                <a class="collapse-item text-white" href="../enrollment/approve.php">Approve Enrollment</a>
-                <a class="collapse-item text-white" href="../enrollment/withdrawals.php">Withdrawals & Dropped</a>
-            </div>
-        </div>
-    </li>
-
     <!-- Nav Item - Student Enrollment Records -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#studentRecordsMenu"

@@ -7,6 +7,20 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'student') {
 
 $pageTitle = "Student Dashboard";
 include('../partials/public_layout.php');
+
+// Fetch student_id from current logged-in user
+$currentUserId = $_SESSION['user_id'];
+$userQuery = "SELECT student_id FROM users WHERE id = $currentUserId LIMIT 1";
+$userResult = mysqli_query($conn, $userQuery);
+$user = mysqli_fetch_assoc($userResult);
+$studentId = $user['student_id'] ?? null;
+
+$latestApplication = null;
+if ($studentId) {
+    $appQuery = "SELECT status, created_at FROM student_registration WHERE id = $studentId ORDER BY created_at DESC LIMIT 1";
+    $appResult = mysqli_query($conn, $appQuery);
+    $latestApplication = mysqli_fetch_assoc($appResult);
+}
 ?>
 
 <h1 class="text-center mb-4">Welcome to Your Dashboard</h1>
@@ -18,7 +32,7 @@ include('../partials/public_layout.php');
             <i class="fas fa-file-alt fa-3x text-primary mb-3"></i>
             <h5 class="card-title">My Applications</h5>
             <p class="card-text">View your enrollment status.</p>
-            <a href="#" class="btn btn-outline-primary btn-sm">View</a>
+            <a href="my_applications.php" class="btn btn-outline-primary btn-sm">View</a>
         </div>
     </div>
 
@@ -42,6 +56,34 @@ include('../partials/public_layout.php');
         </div>
     </div>
 </div>
+
+<!-- Latest Application Status -->
+<?php if ($latestApplication): ?>
+<div class="card p-4 mb-4 border-left-primary">
+    <h5 class="mb-3"><i class="fas fa-info-circle text-primary me-2"></i>Your Latest Application Status</h5>
+    <p><strong>Status:</strong>
+        <?php
+            $status = strtolower($latestApplication['status']);
+            if ($status === 'approved') {
+                echo '<span class="badge badge-success">Approved</span>';
+            } elseif ($status === 'pending') {
+                echo '<span class="badge badge-warning">Pending</span>';
+            } elseif ($status === 'rejected' || $status === 'declined') {
+                echo '<span class="badge badge-danger">Declined</span>';
+            } elseif ($status === 'endorsed') {
+                echo '<span class="badge badge-primary">Endorsed</span>';
+            } else {
+                echo '<span class="badge badge-secondary">Unknown</span>';
+            }
+        ?>
+    </p>
+    <p><strong>Application Date:</strong> <?= date('F d, Y h:i A', strtotime($latestApplication['created_at'])) ?></p>
+</div>
+<?php else: ?>
+<div class="alert alert-info">
+    <i class="fas fa-info-circle"></i> You have not submitted any applications yet.
+</div>
+<?php endif; ?>
 
 <!-- Enrollment Progress -->
 <div class="card p-4 mb-4">
